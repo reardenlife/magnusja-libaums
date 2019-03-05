@@ -1,0 +1,26 @@
+language: android
+jdk: oraclejdk8
+dist: trusty
+sudo: required
+group: edge
+
+android:
+  components:
+    - tools
+    - android-26
+
+install:
+  - sudo apt-get install build-essential
+  - yes | sdkmanager 'ndk-bundle'
+  - yes | sdkmanager 'cmake;3.6.4111459'
+
+env:
+  global:
+   # install timeout in minutes (2 minutes by default)
+    - ADB_INSTALL_TIMEOUT=8
+
+script:
+  - ./gradlew build -x bintray jacocoTestReport --stacktrace
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

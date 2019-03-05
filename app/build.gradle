@@ -1,0 +1,35 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
+
+    defaultConfig {
+        applicationId "com.github.mjdev.usbfileman"
+        minSdkVersion 16
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'junit:junit:4.12'
+    api 'androidx.appcompat:appcompat:1.0.0-beta01'
+    api 'com.google.android.material:material:1.0.0-beta01'
+    api project(':libaums')
+    api project(':httpserver')
+    api project(':storageprovider')
+    api project(':javafs')
+}
