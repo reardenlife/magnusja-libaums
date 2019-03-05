@@ -23,4 +23,9 @@
         protocol="80"
         subclass="6" />
 
+    <usb-device
+        class="8"
+        protocol="80"
+        subclass="5" />
+
 </resources>
